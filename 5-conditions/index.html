@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditions</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    
+</head>
+<body>
+    <div id="app">
+        
+        <button @click="titleShow = !titleShow">Gizle / Göster</button>
+        <h3 v-if="titleShow">Balık Toggle</h3>
+ 
+        <hr>
+
+        <button @click="counter++">+1</button>
+        <button @click="counter--">-1</button>
+        <p>   {{counter}}  </p>
+        <!-- <0 ? 'negatif' : counter > 0 ? 'Pozitif' :  "Sıfır"}}
+              --> <h1 v-if="counter<0" >Negatif</h1>
+              <h2 v-else-if="counter >0">Pozitif</h2>
+              <h3 v-else="counter ===0">Sıfır</h3>
+    </div>
+
+     <script src="app.js"></script>
+    
+</body>
+</html>
