@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2 simple vue app</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <style>
+        .container{
+            width : 300px;
+            height: 200px;
+            border: 2px dashes #666;
+            background-color: #efefef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>{{title}}</h1>
+        <p>{{message}}</p>
+        {{todoList}} 
+        <div>
+            <a v-bind:href="link.url" target="link.target">{{link.title}}</a>
+           
+        </div>
+        <div v-bind:data-id="title" v-html="description"> 
+             
+        </div>
+          
+        <button @click="update('title')"> title değiştir </button>
+        <button @click="update('link')"> link değiştir </button>
+        <div class="container" @mousemove="trackMouse" @mouseenter="containerEnter" @mouseleave="containerOut">
+                {{coords}}
+        </div>
+         </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

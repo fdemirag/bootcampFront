@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div class="container" id="app">
+        <input v-model="todoValue" type="text" placeholder="Yapılacaklar listesi..."/>
+        <button @click="addTodo" >ekle</button>
+        <ul  >
+            <li v-for ="todo in todoList">
+                {{todo}}
+            </li>
+         
+        </ul>
+        <span >Total:{{todoList.lenght}}</span>
+    </div>
+
+<script src="./app.js"></script>
+
+</body>
+</html>

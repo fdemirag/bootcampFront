@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reactivity</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        #app{
+            display:flex;
+            justify-content: space-start;
+            align-items: center;
+        }
+        .container{
+            text-align: center;
+            margin-right: 10px;
+            border: 1px solid #678;
+        }
+    </style>
+    
+</head>
+<body>
+    <div id="app">
+        
+       <div class="container">
+                <h3>{{counter}}</h3>
+                <p> {{oddOrEven}}</p> 
+                <button @click="counter++" >ikişer ikişer artır</button>
+    
+       </div> 
+         
+       <div class="container">
+        <h3>{{counter2}}</h3>
+        <p> {{oddOrEven2}}</p>
+        
+<button @click="counter2++" >ikişer ikişer artır</button>
+</div> 
+
+    <script src="app.js"></script>
+</body>
+</html>
