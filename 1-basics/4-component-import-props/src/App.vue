@@ -7,7 +7,12 @@
     </div>
   </div>
  
-<appCard></appCard>
+  <div class="row mt-2">
+    <div v-for="i in 2" :key="i" class="col-6">
+
+    <appCard></appCard>
+    </div>
+  </div>
 
 
 
