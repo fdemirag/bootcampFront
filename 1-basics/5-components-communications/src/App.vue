@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row mt-5">
 
-   <PlaceList :items="placeList"/>
+   <PlaceList :items="placeList" :addItem="addNewPlace"/>
 
 
   </div>
@@ -30,6 +30,15 @@ export default {
    
     ]
   }
- }
+ 
+ },
+  methods : {
+    addNewPlace(item){
+      this.placeList.push({
+        id:new Date().getTime(),
+        ...item
+      })
+    }
+  }
 };
 </script>

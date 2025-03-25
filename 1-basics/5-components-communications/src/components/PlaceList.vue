@@ -12,6 +12,7 @@
     
     <appCard :item="item"/>
   </div>
+  <button @click="addItem({name:'istanbul',description:'kaos',link:'www.ibb.gov.tr'})" class="btn-primary btn-sm">Add New Place</button>
 </template>
 
 <script>
@@ -21,7 +22,9 @@ export default {
             type : Array,
             required: true,
             default :()=> []
-        }
+        },
+        addItem : Function
+
     } 
 }
 </script>
