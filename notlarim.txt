@@ -1,0 +1,5 @@
+Custom event kullanmak için $emit i kullanıyoruz 
+
+Emiti kullanırken (eventin adı , göndereceği değer ) olarak yazılır 
+
+Provide ile global alana tanımlıyoruz inject ile gitmesi gereken yere uyguluyoruz 
