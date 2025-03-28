@@ -31,22 +31,37 @@
     </div>
   </div>
 
-  <div>
-    <ul class="list-group">
-      <li v-for="todo in todoList" :key="todo.id" class="list-group-item">
-        {{ todo.title }} --- {{ todo.id }} --- {{ todo.completed }}
-      </li>
-    </ul>
+   
+
+  <div v-if="loadingState" class="loading-container">
+    <div class="spinner-border text-warning" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
   </div>
 </template>
 
-<script>
-import axios from "axios";
+<style>
+.loading-container{
+  position:absolute;
+  top:0;
+  left:0;
+  width: 100vw;
+  height:100vh;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background-color : rgba(0,0,0,.5)
+}
+</style>
+
+<script> 
+import appAxios from "./adapters/appAxios";
 
 export default {
   data() {
     return {
       todoList: [],
+      loadingState:false
     };
   },
   mounted() {
@@ -54,14 +69,25 @@ export default {
   },
   methods: {
     getList() {
-      axios.get("http://localhost:3000/todos").then((todo_List_response) => {
+      this.loadingState=true;
+      // axios.get("http://localhost:3000/todos")
+       appAxios.get("/todos",{
+        headers: {
+          rest:true,
+          myCustomHeader:"appReload"
+        }
+       })
+      .then((todo_List_response) => {
         console.log(todo_List_response);
         this.todoList = todo_List_response.data;
-      });
+      }).catch((e)=>console.error(e))
+        .finally(()=>this.loadingState=false)
+    ;
     },
     newTodo(e) {
-      axios
-        .post("http://localhost:3000/todos", {
+      this.loadingState=true;
+      appAxios
+        .post("/todos", {
           title: e.target.value,
           completed: false,
           
@@ -78,10 +104,20 @@ export default {
           //   e.target.value = null
           // });
         })
-        .catch((e) => console.error(e));
+        .catch((e) => console.error(e))
+        .finally(()=>this.loadingState=false);
     },
     deleteItem(item) {
+        
+      this.loadingState=true;
+      appAxios.delete(`/todos/${item.id}`)
+      .then(todo_delete_response => { 
+        if (todo_delete_response.status ===200){ 
       this.todoList = this.todoList.filter((t) => t !== item);
+        }
+      })
+      .catch(e => console.error(e))
+      .finally(()=> this.loadingState=false)
       
     },
   },
